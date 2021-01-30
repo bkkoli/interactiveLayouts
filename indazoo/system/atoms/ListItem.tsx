@@ -4,6 +4,7 @@ import React from 'react'
 type ListItemProps = {
   name: string
   direction: string
+  icon: string
 }
 
 /* eslint-disable */
@@ -17,6 +18,7 @@ function ListItem({ name, direction }: ListItemProps) {
 ListItem.defaultProps = {
   name: '',
   direction: 'row',
+  icon: ''
 }
 
 export default ListItem

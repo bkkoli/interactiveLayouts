@@ -11,8 +11,8 @@ type HeaderV1Props = {
 
 function HeaderV1({ data, className }: HeaderV1Props) {
   return (
-    <header className={`h-20 flex items-center px-20 ${className}`}>
-      <nav className="flex w-full">
+    <header className={`h-20 flex items-center px-10 lg:px-20 ${className}`}>
+      <nav className="flex w-full items-center">
         {/* brandIcon */}
         <div className="brandIcon cursor-pointer">
           <Link href="/">
@@ -20,8 +20,13 @@ function HeaderV1({ data, className }: HeaderV1Props) {
           </Link>
         </div>
 
+        {/* mobile menu button */}
+        <svg className="md:hidden ml-auto cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="red" width="20" height="20" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+
         {/* menu */}
-        <List className="ml-auto items-center" data={data} />
+        <List className="hidden md:flex ml-auto items-center" data={data} />
         {/* userName */}
         {/* logout button */}
       </nav>
