@@ -5,17 +5,15 @@ import { useSpring, animated } from 'react-spring';
 
 type HoverImageProps = {
 	src: string;
-	width: number;
-	height: number;
+	style: React.CSSProperties;
 };
 
 HoverImage.defaultProps = {
 	src: '',
-	width: 100,
-	height: 100,
+	style: {},
 };
 
-function HoverImage({ src, width, height }: HoverImageProps) {
+function HoverImage({ src, style }: HoverImageProps) {
 	const [isHovering, setIsHovering] = useState(false);
 	const { opacityAnim } = useSpring({
 		opacityAnim: isHovering ? 1 : 0,
@@ -26,21 +24,23 @@ function HoverImage({ src, width, height }: HoverImageProps) {
 
 	return (
 		<div
-			style={{
-				width: width,
-				height: height,
-				// TODO:- 추후 component로 합칠 때 이 backgroundColor 값만 빼줄것
-				backgroundColor: '#000000'
-			}}
+			style={style}
 			onMouseEnter={handleHover}
 			onMouseLeave={handleHover}
 		>
 			<animated.div
 				style={{
-					opacity: opacityAnim.interpolate({ range: [0, 1], output: [0.0, 1] }),
+					opacity: opacityAnim.interpolate({
+						range: [0, 1],
+						output: [0.0, 1],
+					}),
+					width: '100%',
+					height: '100%',
+					display: 'flex',
+					alignItems: 'center'
 				}}
 			>
-				<img src={src} />
+				<img className="object-center object-cover h-full w-full" src={src}/>
 			</animated.div>
 		</div>
 	);
