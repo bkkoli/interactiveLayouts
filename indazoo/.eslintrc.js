@@ -11,6 +11,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    'react/jsx-filename-extension': 0,
     semi: [2, 'never'],
     'no-console': ['warn', { allow: ['debug', 'warn', 'info', 'error'] }],
     'no-unused-vars': 'warn',
