@@ -1,6 +1,7 @@
 import React, { useState, useRef, memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSpring, animated } from 'react-spring';
 
 type HoverImageProps = {
 	src: string;
@@ -11,16 +12,37 @@ type HoverImageProps = {
 HoverImage.defaultProps = {
 	src: '',
 	width: 100,
-	height: 100
+	height: 100,
 };
 
 function HoverImage({ src, width, height }: HoverImageProps) {
 	const [isHovering, setIsHovering] = useState(false);
-
+	const { x } = useSpring({
+		from: { x: 0 },
+		x: isHovering ? 1 : 0,
+		config: { duration: 400 },
+	});
 	const handleHover = () => setIsHovering(!isHovering);
 
 	return (
-		<img src={src} width={isHovering ? width * 2 : width} height={height} onMouseEnter={handleHover} onMouseLeave={handleHover} />
+		<div
+			style={{
+				width: width,
+				height: height,
+				// TODO:- 추후 component로 합칠 때 이 backgroundColor 값만 빼줄것
+				backgroundColor: '#000000'
+			}}
+			onMouseEnter={handleHover}
+			onMouseLeave={handleHover}
+		>
+			<animated.div
+				style={{
+					opacity: x.interpolate({ range: [0, 1], output: [0.0, 1] }),
+				}}
+			>
+				<img src={src} />
+			</animated.div>
+		</div>
 	);
 }
 
