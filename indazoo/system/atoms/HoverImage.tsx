@@ -17,9 +17,9 @@ HoverImage.defaultProps = {
 
 function HoverImage({ src, width, height }: HoverImageProps) {
 	const [isHovering, setIsHovering] = useState(false);
-	const { x } = useSpring({
-		from: { x: 0 },
-		x: isHovering ? 1 : 0,
+	const { opacityAnim } = useSpring({
+		opacityAnim: isHovering ? 1 : 0,
+		from: { opacityAnim: 0 },
 		config: { duration: 400 },
 	});
 	const handleHover = () => setIsHovering(!isHovering);
@@ -37,7 +37,7 @@ function HoverImage({ src, width, height }: HoverImageProps) {
 		>
 			<animated.div
 				style={{
-					opacity: x.interpolate({ range: [0, 1], output: [0.0, 1] }),
+					opacity: opacityAnim.interpolate({ range: [0, 1], output: [0.0, 1] }),
 				}}
 			>
 				<img src={src} />
