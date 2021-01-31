@@ -15,46 +15,46 @@ function IndazooLayout({ children, title }: IndazooProps) {
       text: 'ABOUT',
       to: '/about',
       _id: '/',
-      icon: '',
       hasChild: true,
       collapsed: false,
       parentId: '/',
+      icon: void 0,
     },
     {
       text: 'ARTISTS',
       to: '/artists',
       _id: '/',
-      icon: '',
       hasChild: true,
       collapsed: false,
       parentId: '/',
+      icon: void 0,
     },
     {
       text: 'WORKS',
       to: '/works',
       _id: '/',
-      icon: '',
       hasChild: true,
       collapsed: false,
       parentId: '/',
+      icon: void 0,
     },
     {
       text: 'SHOP',
       to: '/shop',
       _id: '/',
-      icon: '',
       hasChild: true,
       collapsed: false,
       parentId: '/',
+      icon: void 0,
     },
     {
       text: 'CONTACT',
       to: '/contact',
       _id: '/',
-      icon: '',
       hasChild: true,
       collapsed: false,
       parentId: '/',
+      icon: void 0,
     },
   ]
 
@@ -66,9 +66,11 @@ function IndazooLayout({ children, title }: IndazooProps) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <HeaderV1 data={sitemap.map(({ to: href, text: name }) => ({ href, name }))} />
+      <HeaderV1 data={sitemap.map(({ to: href, text: name, icon }) => ({ href, name, icon }))} />
 
-      <main className="bg-gray-200" style={{height: 'calc(100vh - 5rem)'}}>{children}</main>
+      <main className="bg-gray-200" style={{ height: 'calc(100vh - 5rem)' }}>
+        {children}
+      </main>
 
       <footer></footer>
     </div>
