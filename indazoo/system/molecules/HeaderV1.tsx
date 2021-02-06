@@ -16,12 +16,22 @@ function HeaderV1({ data, className }: HeaderV1Props) {
         {/* brandIcon */}
         <div className="brandIcon cursor-pointer">
           <Link href="/">
-            <Image src="/system/brandLogo.png" alt="indazoo" width="102" height="42" />
+            <div>
+              <Image src="/system/brandLogo.png" alt="indazoo" width="102" height="42" />
+            </div>
           </Link>
         </div>
 
         {/* mobile menu button */}
-        <svg className="md:hidden ml-auto cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="red" width="20" height="20" viewBox="0 0 24 24" stroke="currentColor">
+        <svg
+          className="md:hidden ml-auto cursor-pointer"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="red"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
 
